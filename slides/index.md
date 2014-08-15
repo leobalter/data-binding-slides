@@ -12,20 +12,6 @@
 
 ---
 
-## Evolution on TC-39
-
-### ES6 and ES7
-
-```js
-y = "Well, you know We all want to change the world"
-[
-   "You say you want a revolution",
-   "You tell me that it's evolution"
-].map( x => x + "\n " + y ).join( "\n" );
-```
-
----
-
 ## Function.prototype.bind
 
 - Creates a bound function with the first given argument as its context
@@ -121,7 +107,11 @@ console.log( obj ); // Object { foo: "quux" }
 - prevents existing properties from being removed
 - and prevents existing properties, or their enumerability, configurability, or writability, from being changed
 
-In essence the object is made effectively **immutable**.
+In essence the object's surface is made effectively **immutable**.
+
+???
+
+eg. O.f will not "freeze" a Map instance. It will just make the methods and properties frozen, but the internal [[MapData]] is not frozen.
 
 ---
 
@@ -160,6 +150,20 @@ Immutable data cannot be changed once created, leading to much simpler applicati
 ]
 
 .footnote[[Immutable.JS](https://github.com/facebook/immutable-js)]
+
+---
+
+## Evolution on TC-39
+
+### ES6 and ES7
+
+```js
+var y = "Well, you know We all want to change the world";
+var z = [
+   "You say you want a revolution",
+   "You tell me that it's evolution"
+].map(x => `${x} \n  ${y} \n`).join("");
+```
 
 ---
 
