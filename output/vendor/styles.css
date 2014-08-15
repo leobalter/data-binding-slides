@@ -124,3 +124,9 @@ padding-top: 1em;
 blockquote {
     font-size: 2em;
 }
+
+
+.hljs .remark-code-span-highlighted:before,
+.hljs .remark-code-span-highlighted:after {
+    content:"`"
+}

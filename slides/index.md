@@ -136,6 +136,13 @@ obj.quaxxor = "the friendly duck";
 
 ---
 
+# Customized Properties
+
+### [Object.defineProperty(obj, prop, desc)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
+### [Object.defineProperties(obj, props)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties)
+
+---
+
 # Why immutable?
 
 Immutable data cannot be changed once created, leading to much simpler application development and enabling techniques from functional programming such as lazy evaluation.
@@ -158,8 +165,9 @@ Immutable data cannot be changed once created, leading to much simpler applicati
 ### ES6 and ES7
 
 ```js
-var y = "Well, you know We all want to change the world";
-var z = [
+var z, y;
+y = "Well, you know We all want to change the world";
+z = [
    "You say you want a revolution",
    "You tell me that it's evolution"
 ].map(x => `${x} \n  ${y} \n`).join("");
