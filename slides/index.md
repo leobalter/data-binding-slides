@@ -480,23 +480,27 @@ We're all doing what we can
 
 # Frameworks today
 
-*Various JavaScript **frameworks offer workarounds** that developers can use to get a WYSIWYG (What You See Is What You Get) display based on exactly what their app is doing. But these workarounds add more code that can slow the app down, alter the flow of its execution and potentially introduce new bugs.*
-
-*Object.observe() would simplify the problem by creating a direct pipeline between an app's data structures and its display. It can do this more easily because it's an actual change baked into the structure of the JavaScript language itself, and **not just a collection of bolted-on code**.*
+- wire up relationships between Objects as **models** and Elements as **views**
+- WYSIWYG workarounds
+- collection of bolted-on code mostly
 
 .footnote[
-[Why Javascript Developers Should Get Excited About Object.observe()](http://readwrite.com/2014/07/24/object-observe-javascript-api-impact) by [Lauren Orsini](http://readwrite.com/author/lauren-orsini)
+Refs:
+- [Data-binding Revolutions with Object.observe()](http://www.html5rocks.com/en/tutorials/es7/observe/#toc-importance) by [Addy Osmani](https://twitter.com/addyosmani)
+- [Why Javascript Developers Should Get Excited About Object.observe()](http://readwrite.com/2014/07/24/object-observe-javascript-api-impact) by [Lauren Orsini](http://readwrite.com/author/lauren-orsini)
 ]
 
----
+???
 
-# Frameworks today
+Addy:
 
 *Data-binding is particularly useful when you have a complex user-interface where you need to wire up relationships between multiple properties in your data models with multiple elements in your views. This is pretty common in the single-page applications we’re building today.*
 
-.foonote[
-[Data-binding Revolutions with Object.observe()](http://www.html5rocks.com/en/tutorials/es7/observe/#toc-importance) by [Addy Osmani](https://twitter.com/addyosmani)
-]
+Lauren:
+
+*Various JavaScript **frameworks offer workarounds** that developers can use to get a WYSIWYG (What You See Is What You Get) display based on exactly what their app is doing. But these workarounds add more code that can slow the app down, alter the flow of its execution and potentially introduce new bugs.*
+
+*Object.observe() would simplify the problem by creating a direct pipeline between an app's data structures and its display. It can do this more easily because it's an actual change baked into the structure of the JavaScript language itself, and **not just a collection of bolted-on code**.*
 
 ---
 
@@ -530,7 +534,7 @@ it's unlikely that it will change, but devs that chose to use it should also mak
 
 # So what should I do?
 
-## You can play, you can experiment, you should give it a try
+## You should play, experiment, and give it a try
 
 .right-column[
 ```
@@ -568,6 +572,12 @@ Well, you know
 You better free you mind instead
 ```
 ]
+
+---
+
+# The Music Player Demo
+
+## [WIP]
 
 ---
 
