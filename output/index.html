@@ -368,13 +368,20 @@ console.log( person instanceof Person ); // true
 
 # ES7 Object.observe
 
-## A revolution is coming. [*](http://www.html5rocks.com/en/tutorials/es7/observe/)
-
 ```js
 Object.observe( object, changesCallback );
 ```
 
-.footnote.right[\* [Addy Osmani](https://twitter.com/addyosmani)]
+## A native, highly optimized implementation on which data binding strategies can be built. [*](http://twitter.com/rwaldron)
+
+.footnote.right[\* [Rick Waldron](http://twitter.com/rwaldron)]
+
+???
+
+Modern web applications are generally built using one of these—primarily for some degree of data-binding, along with additional goodies to simplify the workload.
+
+Note: by default, get/set accessors won’t notify, but you can create custom notifiers, which I will show you below.
+
 
 ---
 
