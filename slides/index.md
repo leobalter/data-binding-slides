@@ -12,27 +12,7 @@
 
 ---
 
-## Function.prototype.bind
-
-- Creates a bound function with the first given argument as its context
-- The following arguments are prepended to the bound function when invoked
-- PhantomJS still [doesn't support it](http://kangax.github.io/compat-table/es5/).
-
-```js
-function getX() {
-	return this.x;
-}
-
-var coord = { x: 2 };
-
-coordX = getX.bind( coord );
-
-coordX(); // 2
-```
-
----
-
-## Some ES5 data features already
+## ES5: data integrity + meta object programming intrinsics
 
 ### [Object.freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
 
@@ -143,7 +123,20 @@ obj.quaxxor = "the friendly duck";
 
 ---
 
-# Why immutable?
+# Property descriptors
+
+```js
+Object.defineProperties(obj, {
+  "property1": {
+    value: "foo",
+    writable: true
+  }
+}
+```
+
+---
+
+# The Immutable way
 
 Immutable data cannot be changed once created, leading to much simpler application development and enabling techniques from functional programming such as lazy evaluation.
 
@@ -208,13 +201,13 @@ http://gwendall.github.io/way/
 
 # ES6 [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
 
-> [intercept operations intended for the target object *](http://www.nczonline.net/blog/2014/04/22/creating-defensive-objects-with-es6-proxies/)
-
-Through a proxy object you can intercept and implement custom handling on all operations on its properties.
-
 ```js
 var proxObj = new Proxy( obj, handler );
 ```
+
+## meta object programming evolves into proxy programming
+
+
 
 .footnote.right[\* [Nicholas C. Zakas](https://twitter.com/slicknet)]
 
@@ -404,21 +397,72 @@ model.title = "bjs2014"; // update title BrazilJS
 
 ---
 
-# Proxy !== O.o
+## Super basic two way data binding example:
 
-> Object.observe doesn't create another object to place **property traps** as Proxy does
+```html
+<input type="text" id="name" value="">
+```
+
+```js
+var model = {
+  name: { value: "Rick" }
+};
+var view = {
+  name: document.getElementById("name")
+};
+```
+---
+
+```js
+Object.keys( model ).forEach(function( key ) {
+  Object.observe( model[ key ], function( changes ) {
+    changes.forEach(function( record ) {
+      view[ key ].value = record.object.value;
+    });
+  });
+
+  view[ key ].oninput = function( event ) {
+    model[ key ].value = event.target.value;
+  };
+
+  view[ key ].value = model[ key ].value;
+});
+
+```
+
+[Demo](./examples/twoway.html)
 
 ---
 
 # Proxy !== O.o
 
-> Object.observe doesn't create another object to place property traps as Proxy does, instead it just **observe an object**
+- Proxy implements property traps
+
+???
+
+Object.observe doesn't create another object to place **property traps** as Proxy does
 
 ---
 
 # Proxy !== O.o
 
-> Object.observe doesn't create another object to place property traps as Proxy does, instead it just observe an object and **register changes in an object**.
+- Proxy implements property traps
+- O.o observers an object properties
+
+???
+
+Object.observe doesn't create another object to place property traps as Proxy does, instead it just **observe an object**
+
+---
+
+# Proxy !== O.o
+
+- Proxy implements property traps
+- O.o observers an object properties and register changes
+
+???
+
+Object.observe doesn't create another object to place property traps as Proxy does, instead it just observe an object and **register changes in an object**.
 
 ---
 
@@ -468,9 +512,9 @@ We're all doing what we can
 
 ## Object.observe is still a proposal on TC-39 to the ES7.
 
-### It will be probably landed
+???
 
-## not guaranteed with the same implementation as today
+it's unlikely that it will change, but devs that chose to use it should also make sure they keep up to date with its progress
 
 ---
 
@@ -481,8 +525,6 @@ We're all doing what we can
 ## [ES7 Object.observe](http://kangax.github.io/compat-table/es7/) is only on Chrome
 
 ## [Traceur](https://github.com/google/traceur-compiler) doesn't support any of them.
-
-PhantomJS doesn't even support Function#bind. No pressure.
 
 ---
 
