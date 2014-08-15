@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tracks</title>
+	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<h1>Track Observer</h1>
+
+	<div><b>Now playing:</b> <span id="now_playing"></span></div>
+	<div>
+		<b>Current Time:</b> <input id="current" type="range" value="0" min="0" readonly>
+		<span id="current_view">0</span> of <span id="max_time">0</span> secs
+	</div>
+	<div><b>Volume:</b> <input id="volume" type="range" min="0" max="100" value="100"></div>
+	<div>
+		<b>Track list:</b>
+		<select id="track_list">
+			<option value="">Choose your track:</option>
+		</select>
+	</div>
+	<div>
+		<label for="play">Play: </label>
+		<input type="checkbox" name="play" id="play" value="">
+	</div>
+
+	<script src="app.js"></script>
+</body>
+</html>
