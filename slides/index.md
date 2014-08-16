@@ -326,7 +326,7 @@ function createDefensiveObject(target) {
     }
   });
 
-  Object.preventExtensions(obj); // trully defensive
+  Object.preventExtensions(obj); // truly defensive
 
   return obj;
 }
@@ -447,7 +447,7 @@ Object.observe doesn't create another object to place **property traps** as Prox
 # Proxy !== O.o
 
 - Proxy implements property traps
-- O.o observers an object properties
+- O.o observes an object's properties
 
 ???
 
@@ -514,7 +514,7 @@ Lauren:
 
 # Gotchas
 
-## Object.observe is still a proposal on TC-39 to the ES7.
+## Object.observe is still only a TC-39 proposal for the ES7.
 
 ???
 
