@@ -18,112 +18,14 @@
 
 ## ES5: data integrity + meta object programming intrinsics
 
+### [Object.defineProperty(obj, prop, desc)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
+### [Object.defineProperties(obj, props)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties)
+
 ### [Object.freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
 
 ### [Object.seal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal)
 
 ### [Object.preventExtensions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions)
-
----
-
-## Object.preventExtensions
-
-- prevents new properties from ever being added to an object
-
----
-
-## Object.preventExtensions
-
-```js
-var obj = {
-	foo: "bar"
-};
-
-Object.preventExtensions( obj );
-
-// You can change prop values
-obj.foo = "quux";
-
-// But can't add a new properties
-obj.quaxxor = "the friendly duck";
-
-// you can still delete properties
-delete obj.foo;
-
-```
-
----
-
-# Object.seal
-
-- seals an object, preventing new properties from being added to it
-- marking all existing properties as non-configurable.
-- values of present properties can still be changed as long as they are writable.
-
----
-
-## Object.seal
-
-```js
-var obj = {
-	foo: "bar"
-};
-
-Object.seal( obj );
-
-// You can still change prop values
-obj.foo = "quux";
-
-// But can't add a new properties
-obj.quaxxor = "the friendly duck";
-
-// non-configurable doesn't allow to delete properties
-delete obj.foo;
-
-console.log( obj ); // Object { foo: "quux" }
-```
-
----
-
-# Object.freeze
-
-- prevents new properties from being added to it
-- prevents existing properties from being removed
-- and prevents existing properties, or their enumerability, configurability, or writability, from being changed
-
-In essence the object's surface is made effectively **immutable**.
-
-???
-
-eg. O.f will not "freeze" a Map instance. It will just make the methods and properties frozen, but the internal [[MapData]] is not frozen.
-
----
-
-## Object.freeze
-
-```js
-var obj = {
-  foo: "bar"
-};
-
-Object.freeze(obj);
-
-// silently does nothing
-obj.foo = "quux";
-obj.quaxxor = "the friendly duck";
-
-(function() {
-	"use strict";
-	obj.foo = "qux"; // throws an Error
-})();
-```
-
----
-
-# Customized Properties
-
-### [Object.defineProperty(obj, prop, desc)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
-### [Object.defineProperties(obj, props)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties)
 
 ---
 
@@ -137,23 +39,6 @@ Object.defineProperties(obj, {
   }
 }
 ```
-
----
-
-# The Immutable way
-
-Immutable data cannot be changed once created, leading to much simpler application development and enabling techniques from functional programming such as lazy evaluation.
-
-.right-column[
-	```
-    But when you talk about destruction
-    Don't you know that you can count me out
-    Don't you know it's gonna be all right?
-    All right, all right
-	```
-]
-
-.footnote[[Immutable.JS](https://github.com/facebook/immutable-js)]
 
 ---
 
@@ -188,6 +73,23 @@ z = [
 Simple, lightweight, persistent, framework-agnostic two-way databinding Javascript library (with no to little JS code to write).
 
 http://gwendall.github.io/way/
+
+---
+
+# The Immutable way
+
+Immutable data cannot be changed once created, leading to much simpler application development and enabling techniques from functional programming such as lazy evaluation.
+
+.right-column[
+	```
+	But when you talk about destruction
+	Don't you know that you can count me out
+	Don't you know it's gonna be all right?
+	All right, all right
+	```
+]
+
+.footnote[[Immutable.JS](https://github.com/facebook/immutable-js)]
 
 ---
 
@@ -315,7 +217,7 @@ console.log( box.alive ); // chance
 
 ---
 
-Nicholas C. Zakas also introduced the [defensive pattern](http://www.nczonline.net/blog/2014/04/22/creating-defensive-objects-with-es6-proxies/)
+Nicholas C. Zakas's [defensive pattern](http://www.nczonline.net/blog/2014/04/22/creating-defensive-objects-with-es6-proxies/)
 
 ```js
 function createDefensiveObject(target) {
@@ -462,7 +364,7 @@ Object.observe doesn't create another object to place property traps as Proxy do
 # Proxy !== O.o
 
 - Proxy implements property traps
-- O.o observers an object properties and register changes
+- O.o observes an object properties and register changes
 
 ???
 
@@ -470,7 +372,9 @@ Object.observe doesn't create another object to place property traps as Proxy do
 
 ---
 
-# [Code something](https://github.com/leobalter/data-binding-watch)
+# Code something
+
+## [The Data Binding Watch](https://github.com/leobalter/data-binding-watch)
 
 .right-column[
 ```
@@ -490,8 +394,8 @@ We're all doing what we can
 
 .footnote[
 Refs:
-- [Data-binding Revolutions with Object.observe()](http://www.html5rocks.com/en/tutorials/es7/observe/#toc-importance) by [Addy Osmani](https://twitter.com/addyosmani)
-- [Why Javascript Developers Should Get Excited About Object.observe()](http://readwrite.com/2014/07/24/object-observe-javascript-api-impact) by [Lauren Orsini](http://readwrite.com/author/lauren-orsini)
+- [#1](http://www.html5rocks.com/en/tutorials/es7/observe/#toc-importance) by [Addy Osmani](https://twitter.com/addyosmani)
+- [#2](http://readwrite.com/2014/07/24/object-observe-javascript-api-impact) by [Lauren Orsini](http://readwrite.com/author/lauren-orsini)
 ]
 
 ???
@@ -573,7 +477,6 @@ Well, you know
 We all want to change your head
 You tell me it's the institution
 Well, you know
-You better free you mind instead
 ```
 ]
 
@@ -581,7 +484,13 @@ You better free you mind instead
 
 # The Music Player Demo
 
-## [WIP]
+[Play](./examples/index.html)
+
+.right-column[
+```
+You better free you mind instead
+```
+]
 
 ---
 
