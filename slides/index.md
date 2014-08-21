@@ -4,6 +4,10 @@
 
 ---
 
+.center[![Bob](bocoup-450.png)]
+
+---
+
 > Data binding is the process that establishes a connection between the application UI and business logic.
 
 ---
