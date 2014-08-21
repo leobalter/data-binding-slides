@@ -5,25 +5,37 @@
 	<title>Tracks</title>
 	<link rel="stylesheet" href="normalize.css">
 	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 </head>
 <body>
-	<h1>Track Observer</h1>
+	<div class="player">
+		<h1 class="player-title">Track Observer</h1>
 
-	<div><b>Now playing:</b> <span id="now_playing"></span></div>
-	<div>
-		<b>Current Time:</b> <input id="current" type="range" value="0" min="0" readonly>
-		<span id="current_view">0</span> of <span id="max_time">0</span> secs
-	</div>
-	<div><b>Volume:</b> <input id="volume" type="range" min="0" max="100" value="100"></div>
-	<div>
-		<b>Track list:</b>
-		<select id="track_list">
-			<option value="">Choose your track:</option>
-		</select>
-	</div>
-	<div>
-		<label for="play">Play: </label>
-		<input type="checkbox" name="play" id="play" value="">
+		<div class="player-content">
+			<p>
+				<label class="player-choose">
+					<select id="track_list">
+						<option value="">Choose your track:</option>
+					</select>
+				</label>
+			</p>
+			<p class="progress-holder">
+				<progress class="progress" id="current" value="0" max="0"></progress>
+				<span class="progress-stats"><span id="current_view">0</span> of <span id="max_time">0</span> secs</span>
+			</p>
+
+			<p>
+				<i class="fa fa-volume-up"></i> <input class="range" id="volume" type="range" min="0" max="100" value="100">
+			</p>
+
+			<p>
+				<label for="play" class="button-holder">
+					<input class="check" type="checkbox" name="play" id="play" value="">
+					<span class="player-button play"><i class="fa fa-play"></i></span>
+					<span class="player-button pause"><i class="fa fa-pause"></i></span>
+				</label>
+			</p>
+		</div>
 	</div>
 
 	<script src="app.js"></script>

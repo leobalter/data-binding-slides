@@ -302,3 +302,170 @@ textarea {
         page-break-after: avoid;
     }
 }
+
+
+/*
+    PLAYER STYLES
+    =============
+*/
+html {
+    background: rgb(210, 210, 210);
+}
+
+
+/*
+    PLAYER
+*/
+.player {
+    background: rgb(233, 237, 238);
+    border-radius: 20px;
+    color: rgb(130, 130, 130);
+    width: 460px;
+    margin: 40px auto;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, .2), 0 20px 30px rgba(0, 0, 0, .2);
+}
+
+.player-content {
+    padding: 20px;
+}
+
+.player-title {
+    margin: 0;
+    text-align: center;
+}
+
+/*
+    OBJECTS
+*/
+.range,
+progress,
+select {
+    width: 100%;
+}
+
+/*
+    VOLUME
+*/
+.range {
+    -webkit-appearance: none;
+    background: rgb(65, 65, 65);
+    height: 20px;
+    border-radius: 10px;
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, .6);
+}
+
+.range::-webkit-slider-thumb {
+	-webkit-appearance: none;
+    border: solid 5px rgb(255, 255, 255);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 1);
+    background: rgb(65, 65, 65);
+    border-radius: 40px;
+    cursor: pointer;
+	position: relative;
+	height: 20px;
+    top: 0;
+    width: 20px;
+    z-index: 1;
+}
+.range:focus {
+    outline: none;
+}
+
+
+/*
+    PROGRESS
+*/
+.progress-holder {
+    position: relative;
+}
+.progress-stats {
+    color: rgb(255, 255, 255);
+    font-size: .6em;
+    position: absolute;
+    top: 4px;
+    right: 10px;
+}
+
+.progress {
+  border-radius: 10px;
+  height: 20px;
+}
+
+.progress::-webkit-progress-bar {
+  background: rgb(65, 65, 65);
+  border-radius: 10px;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, .6);
+  padding: 1px;
+}
+
+progress[value]::-webkit-progress-value {
+    background: rgb(205, 210, 215);
+    border-radius: 20px;
+}
+
+
+/*
+    SELECT
+*/
+.player-choose {
+    border: none;
+    border-radius: 20px;
+    background: rgb(65, 65, 65);
+    box-sizing: border-box;
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, .6);
+    display: flex;
+    margin: 0 0 20px 0;
+    padding: 5px 20px;
+    overflow: hidden;
+}
+
+.player-choose select {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    color: rgb(255, 255, 255);
+    -webkit-appearance: none;
+}
+
+.player-choose select:focus {
+    outline: none;
+}
+
+
+/*
+    PLAYER BUTTON
+*/
+.player-button {
+    border: 1px solid;
+    background: rgb(65, 65, 65);
+    border-radius: 50%;
+    box-sizing: border-box;
+    color: rgb(217, 217, 217);
+    flex-flow: center;
+    font-size: 2em;
+    width: 66px;
+    cursor: poniter;
+    padding: 10px;
+    text-align: center;
+}
+
+.button-holder {
+    display: flex;
+}
+
+/*
+    CHECKBUTTON
+*/
+.check ~ .pause,
+.check:checked ~ .play {
+    display: none;
+}
+
+.check:checked ~ .pause {
+    display: inline;
+}
+
+.check {
+    display: none;
+}

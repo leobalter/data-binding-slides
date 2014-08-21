@@ -26,6 +26,18 @@
 		});
 	});
 
+	view = {
+		volume: document.querySelector( "#volume" ),
+		now: document.querySelector( "#now_playing" ),
+		current: {
+			input: document.querySelector( "#current" ),
+			text: document.querySelector( "#current_view" ),
+			max: document.querySelector( "#max_time" )
+		},
+		trackList: document.querySelector( "#track_list" ),
+		play: document.querySelector( "#play" )
+	};
+
 	Object.observe( model, function( changes ) {
 		changes.forEach(function( change ) {
 			var name = change.name,
@@ -61,23 +73,11 @@
 		});
 	});
 
-	view = {
-		volume: document.querySelector( "#volume" ),
-		now: document.querySelector( "#now_playing" ),
-		current: {
-			input: document.querySelector( "#current" ),
-			text: document.querySelector( "#current_view" ),
-			max: document.querySelector( "#max_time" )
-		},
-		trackList: document.querySelector( "#track_list" ),
-		play: document.querySelector( "#play" )
-	};
-
+	// DOM Event Listeners
 	view.volume.addEventListener( "change", function() {
 		model.volume = this.value;
 	});
 
-	// DOM Event Listeners
 	view.play.addEventListener( "change", function( ev ) {
 		ev.preventDefault();
 		model.playing = !!this.checked;
